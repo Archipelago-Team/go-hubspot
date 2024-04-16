@@ -37,7 +37,7 @@ type CrmImportColumnMapping struct {
 	IdColumnType       string `json:"idColumnType,omitempty"`
 }
 
-func addJSONtoMultipart(writer *multipart.Writer, importRequest *CrmImportConfig) error {
+func addJSONtoImportMultipart(writer *multipart.Writer, importRequest *CrmImportConfig) error {
 	data, err := json.Marshal(importRequest)
 	if err != nil {
 		return err
@@ -54,7 +54,7 @@ func addJSONtoMultipart(writer *multipart.Writer, importRequest *CrmImportConfig
 	return nil
 }
 
-func addFilesToMultipart(writer *multipart.Writer, importRequest *CrmImportConfig) error {
+func addFilesToImportMultipart(writer *multipart.Writer, importRequest *CrmImportConfig) error {
 	for _, fileDef := range importRequest.Files {
 		csvHeader := textproto.MIMEHeader{}
 		csvHeader.Set("Content-Disposition", fmt.Sprintf("form-data; name=\"files\"; filename=\"%s\"", fileDef.FileName))
@@ -83,12 +83,12 @@ func (s *CrmImportsServiceOp) Start(importRequest *CrmImportConfig) (interface{}
 	writer := multipart.NewWriter(body)
 
 	// Write a part for the JSON metadata.
-	if err := addJSONtoMultipart(writer, importRequest); err != nil {
+	if err := addJSONtoImportMultipart(writer, importRequest); err != nil {
 		return nil, err
 	}
 
 	// Write file data to multipart.
-	if err := addFilesToMultipart(writer, importRequest); err != nil {
+	if err := addFilesToImportMultipart(writer, importRequest); err != nil {
 		return nil, err
 	}
 
