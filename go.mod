@@ -1,6 +1,6 @@
 module github.com/belong-inc/go-hubspot
 
-go 1.16
+go 1.21
 
 require (
 	github.com/google/go-cmp v0.5.4
