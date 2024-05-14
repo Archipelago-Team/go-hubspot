@@ -17,6 +17,7 @@ type AccountInfoServiceOp struct {
 
 type AccountInfo struct {
 	PortalId HsInt `json:"portalId"`
+	UiDomain HsStr `json:"uiDomain"`
 }
 
 var _ AccountInfoService = (*AccountInfoServiceOp)(nil)
