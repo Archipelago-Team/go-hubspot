@@ -14,6 +14,7 @@ var (
 )
 
 var (
+	ExportNewAccount      = newAccount
 	ExportNewCRM          = newCRM
 	ExportNewMarketing    = newMarketing
 	ExportNewConversation = newConversation

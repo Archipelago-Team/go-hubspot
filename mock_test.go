@@ -30,6 +30,7 @@ func NewMockClient(conf *MockConfig) *Client {
 		apiVersion: defaultAPIVersion,
 	}
 	cli.CRM = newCRM(cli)
+	cli.Account = newAccount(cli)
 	SetPrivateAppToken("token")(cli)
 
 	return cli

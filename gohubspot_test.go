@@ -150,6 +150,7 @@ func TestNewClient(t *testing.T) {
 				}
 				want.ExportSetAPIVersion(tt.settings.apiVersion)
 				want.ExportSetBaseURL(tt.settings.baseURL)
+				want.Account = hubspot.ExportNewAccount(want)
 				want.CRM = hubspot.ExportNewCRM(want)
 				want.Marketing = hubspot.ExportNewMarketing(want)
 				want.Conversation = hubspot.ExportNewConversation(want)
