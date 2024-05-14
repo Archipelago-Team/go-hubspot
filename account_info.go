@@ -2,10 +2,6 @@ package hubspot
 
 import "fmt"
 
-const (
-	accountInfoBasePath = "account-info"
-)
-
 type AccountInfoService interface {
 	Details() (*AccountInfo, error)
 }
