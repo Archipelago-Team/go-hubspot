@@ -79,6 +79,7 @@ func NewClient(setAuthMethod AuthMethod, opts ...Option) (*Client, error) {
 	}
 
 	// Since the baseURL and apiVersion may change, initialize the service after applying the options.
+	c.Account = newAccount(c)
 	c.CRM = newCRM(c)
 	c.Marketing = newMarketing(c)
 	c.Conversation = newConversation(c)
