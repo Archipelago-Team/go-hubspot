@@ -34,6 +34,7 @@ type Client struct {
 
 	authenticator Authenticator
 
+	Account      *Account
 	CRM          *CRM
 	Marketing    *Marketing
 	Conversation *Conversation
